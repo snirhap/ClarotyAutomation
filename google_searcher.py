@@ -1,12 +1,11 @@
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import re
 
 
-class Searcher:
-    def __init__(self):
-        self.browser_handler = webdriver.Chrome()
+class GoogleSearcher:
+    def __init__(self, browser_handler):
         self.results_list = []
+        self.browser_handler = browser_handler
 
     def search(self, search_string):
         self.browser_handler.get("https://www.google.com")
@@ -27,15 +26,6 @@ class Searcher:
                 self.results_list.append(url)
 
             return self.results_list[0]
+
         except:
             print('No search was excecuted')
-
-    def close_browser(self):
-        self.browser_handler.quit()
-
-
-s = Searcher()
-s.search('Claroty')
-print(s.get_first_result_link())
-print(s.get_number_of_results())
-# s.close_browser()
