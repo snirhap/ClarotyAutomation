@@ -14,8 +14,11 @@ class GoogleSearcher:
         search_bar.send_keys(Keys.ENTER)  # generates an Enter key pressing
 
     def get_number_of_results(self):
-        stats = self.browser_handler.find_element_by_xpath("//div[@id='resultStats']").text
-        return int(''.join(elem for elem in re.findall(r'\d*', re.sub(r'\(.*?\)', '', stats)) if elem.isdigit()))
+        try:
+            stats = self.browser_handler.find_element_by_xpath("//div[@id='resultStats']").text
+            return int(''.join(elem for elem in re.findall(r'\d*', re.sub(r'\(.*?\)', '', stats)) if elem.isdigit()))
+        except:
+            raise Exception('No searched was executed')
 
     def get_first_result_link(self):
         try:
@@ -28,4 +31,4 @@ class GoogleSearcher:
             return self.results_list[0]
 
         except:
-            print('No search was excecuted')
+            raise Exception('No searched was executed')

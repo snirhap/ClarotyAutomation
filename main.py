@@ -1,5 +1,4 @@
 from selenium import webdriver
-from chrome_handler import ChromeHandler
 from google_searcher import GoogleSearcher
 from claroty_careers_searcher import ClarotyCareerSearcher
 
