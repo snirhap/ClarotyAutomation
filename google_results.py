@@ -7,9 +7,6 @@ class GoogleResults:
         self.results_handler = results_handler
 
     def get_number_of_results(self):
-        """
-            returns the number of results to the search string in Google
-        """
         try:
             stats = self.results_handler.find_element_by_xpath("//div[@id='resultStats']").text
             return int(''.join(elem for elem in re.findall(r'\d*', re.sub(r'\(.*?\)', '', stats)) if elem.isdigit()))
@@ -19,7 +16,6 @@ class GoogleResults:
     def get_result_link_by_position(self, position):
         """
             Returns the URL that appears in the position provided
-            Default is the first result in Google
             position = 1 will return the first result in Google search
         """
         try:
