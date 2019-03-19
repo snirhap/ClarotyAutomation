@@ -29,9 +29,11 @@ class GoogleSearcher:
         except:
             raise Exception('No search was executed')
 
-    def get_first_result_link(self):
+    def get_result_link_by_position(self, position=1):
         """
-            returns the first URL that appears in Google results
+            Returns the URL that appears in the position provided
+            Default is the first result in Google
+            position = 1 will return the first result in Google search
         """
         try:
             all_results = self.browser_handler.find_elements_by_xpath("//div[@id='search']//div[@class='g']")
@@ -40,7 +42,9 @@ class GoogleSearcher:
                 url = result.find_element_by_tag_name('a').find_element_by_tag_name('cite').find_element_by_tag_name('span').text
                 self.results_list.append(url)
 
-            return self.results_list[0]
+            return self.results_list[position-1]
 
+        except IndexError:
+            raise Exception('Position provided is invalid')
         except:
             raise Exception('No search was executed')
