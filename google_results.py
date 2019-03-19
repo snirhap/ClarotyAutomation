@@ -14,10 +14,6 @@ class GoogleResults:
             raise Exception('No search was executed')
 
     def get_result_link_by_position(self, position):
-        """
-            Returns the URL that appears in the position provided
-            position = 1 will return the first result in Google search
-        """
         try:
             all_results = self.results_handler.find_elements_by_xpath("//div[@id='search']//div[@class='g']")
 

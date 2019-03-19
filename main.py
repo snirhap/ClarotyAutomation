@@ -1,6 +1,5 @@
 from selenium import webdriver
 from google_searcher import GoogleSearcher
-
 from claroty_careers_searcher import ClarotyCareerSearcher
 
 if __name__ == '__main__':
@@ -16,7 +15,8 @@ if __name__ == '__main__':
     if first_result_link in ['https://www.claroty.com/', 'http://www.claroty.com/']:
         print('https://www.claroty.com/ is the first result link\n')
     else:
-        print('https://www.claroty.com/ is not the first result link, {} is the first result link\n'.format(first_result_link))
+        print('https://www.claroty.com/ is not the first result link, {} is the first result link\n'
+              .format(first_result_link))
 
     claroty_searcher = ClarotyCareerSearcher(chrome_browser)
     number_of_openings = claroty_searcher.get_number_of_openings()
