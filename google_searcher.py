@@ -27,7 +27,7 @@ class GoogleSearcher:
             stats = self.browser_handler.find_element_by_xpath("//div[@id='resultStats']").text
             return int(''.join(elem for elem in re.findall(r'\d*', re.sub(r'\(.*?\)', '', stats)) if elem.isdigit()))
         except:
-            raise Exception('No searched was executed')
+            raise Exception('No search was executed')
 
     def get_first_result_link(self):
         """
@@ -43,4 +43,4 @@ class GoogleSearcher:
             return self.results_list[0]
 
         except:
-            raise Exception('No searched was executed')
+            raise Exception('No search was executed')
