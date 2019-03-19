@@ -10,14 +10,17 @@ if __name__ == '__main__':
     google_searcher = GoogleSearcher(chrome_browser)
     google_searcher.search('Claroty')
 
+    # # Get the number of results in Google
     print('Number of results: {}\n'.format(google_searcher.get_number_of_results()))
 
-    if google_searcher.get_first_result_link() in ['https://www.claroty.com/']:
+    # # Check if Calroty is the first result link in the result
+    if google_searcher.get_first_result_link() in ['https://www.claroty.com/', 'http://www.claroty.com/']:
         print('https://www.claroty.com/ is the first result link\n')
     else:
         print('Other site is the first result link\n')
 
-    # claroty career search
+    # # Claroty career search
+    # # Check the number of openings in Claroty
     claroty_searcher = ClarotyCareerSearcher(chrome_browser)
     print('Current Number of Openings: {}\n'.format(claroty_searcher.get_number_of_openings()))
 
