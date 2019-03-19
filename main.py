@@ -9,15 +9,13 @@ if __name__ == '__main__':
 
     # Google search
     google_searcher = GoogleSearcher(chrome_browser)
-    google_search_results_handler = google_searcher.search('Claroty')
-
-    google_search_results = GoogleResults(google_search_results_handler)
+    google_search_results = google_searcher.search('Claroty')
 
     # Get the number of results in Google
     print('Number of results: {}\n'.format(google_search_results.get_number_of_results()))
 
     # Check if Calroty is the first result link in the result
-    first_result_link = google_search_results.get_result_link_by_position()  # 1 = first result
+    first_result_link = google_search_results.get_result_link_by_position(1)  # 1 = first result
 
     if first_result_link in ['https://www.claroty.com/', 'http://www.claroty.com/']:
         print('https://www.claroty.com/ is the first result link\n')

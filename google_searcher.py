@@ -1,4 +1,5 @@
 from selenium.webdriver.common.keys import Keys
+from google_results import GoogleResults
 
 
 class GoogleSearcher:
@@ -19,5 +20,5 @@ class GoogleSearcher:
         search_bar.send_keys(search_string)  # type in the search bar
         search_bar.send_keys(Keys.ENTER)  # generates an Enter key pressing
 
-        return self.search_handler
+        return GoogleResults(self.search_handler)
 
