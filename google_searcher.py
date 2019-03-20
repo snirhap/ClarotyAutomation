@@ -8,9 +8,8 @@ class GoogleSearcher:
 
     def search(self, search_string):
         self.search_handler.get("https://www.google.com")
-        search_bar = self.search_handler.find_element_by_xpath("//input[@name='q']")  # get the search bar element
-        search_bar.send_keys(search_string)  # type in the search bar
-        search_bar.send_keys(Keys.ENTER)  # generates an Enter key pressing
+        search_bar = self.search_handler.find_element_by_xpath("//input[@name='q']")
+        search_bar.send_keys(search_string)
+        search_bar.send_keys(Keys.ENTER)
 
         return GoogleResults(self.search_handler)
-
