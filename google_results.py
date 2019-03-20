@@ -13,7 +13,7 @@ class GoogleResults:
         except:
             raise Exception('No search was executed')
 
-    def get_result_link_by_position(self, position):
+    def get_result_links(self):
         try:
             all_results = self.results_handler.find_elements_by_xpath("//div[@id='search']//div[@class='g']")
 
@@ -21,7 +21,7 @@ class GoogleResults:
                 url = result.find_element_by_tag_name('a').find_element_by_tag_name('cite').find_element_by_tag_name('span').text
                 self.results_list.append(url)
 
-            return self.results_list[position-1]
+            return self.results_list
 
         except TypeError:
             raise Exception('Missing position parameter')
@@ -29,3 +29,6 @@ class GoogleResults:
             raise Exception('Position provided is invalid')
         except:
             raise Exception('No search was executed')
+
+    def get_result_link_by_position(self, position):
+        return self.get_result_links()[position-1]
